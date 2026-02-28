@@ -11,15 +11,51 @@ A comprehensive skill for downloading US Census data and creating demographic ma
 - **Summary Statistics**: Generate detailed statistical summaries of your data
 - **Export Capabilities**: Save maps as high-resolution images and data as CSV files
 
-## Setup
+## Installation
 
-### 1. Install Dependencies
+### Option A: Install from Marketplace (Recommended)
+
+This skill is available as a plugin in the **baofeng-skills** marketplace. To install it:
+
+1. Add the `baofeng-skills` marketplace to Claude Code (if you haven't already):
+
+```bash
+claude plugin marketplace add baofeng-skills https://github.com/baofeng-dong/financial-dashboard-skill.git
+```
+
+2. Install the plugin:
+
+```bash
+claude plugin install census-demographics@baofeng-skills
+```
+
+3. Verify the plugin is enabled in `~/.claude/settings.json`:
+
+```json
+{
+  "enabledPlugins": {
+    "census-demographics@baofeng-skills": true
+  }
+}
+```
+
+4. Restart Claude Code. The skill will automatically activate when you ask census or demographics-related questions — no slash command needed. Just ask naturally:
+
+```
+Show me a population density map of Texas counties
+```
+
+### Option B: Manual Setup
+
+If you prefer to install the skill manually:
+
+#### 1. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Get a Census API Key
+#### 2. Get a Census API Key
 
 1. Visit https://api.census.gov/data/key_signup.html
 2. Sign up for a free API key
@@ -36,15 +72,18 @@ echo 'export CENSUS_API_KEY="your_api_key_here"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-### 3. Invoke the Skill
+#### 3. Copy the Skill
 
-In Claude Code, use the skill command:
+Copy the `skill.md` file to your Claude Code skills directory:
 
+```bash
+mkdir -p ~/.claude/skills/census-demographics
+cp skill.md ~/.claude/skills/census-demographics/
 ```
-/skill census-demographics
-```
 
-Or simply type `census-demographics` in your conversation.
+#### 4. Invoke the Skill
+
+In Claude Code, the skill will be available automatically, or you can reference it directly in your conversation.
 
 ## Usage Examples
 
